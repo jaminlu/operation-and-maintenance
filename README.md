@@ -1,10 +1,3 @@
-此脚本用于自动登陆服务器的脚本：
-1、把所需要的服务器，登陆的密钥放在iplist文件里面；
-2、脚本会自动处理iplist文件的内容，将字符串转换成数组，然后获取每个字段；
-3、给iplist里面的主机自动编号，接受用户输入，选择想要登陆的主机；
-4、iplist里面的文件，以#开头会自动忽略，脚本不会读取这一行配置
-
-=======
 # operation-and-maintenance
 
 
@@ -15,4 +8,9 @@
 
 - 语言：shell /python/java/go
 
-  
+
+
+  - autoInstall: 自动化安装myqsl/redis/nginx/等工具；
+  - autologin:  自动登录服务器脚本；
+  - autoRecordlog: 自动记录历史命令的脚本；
+  - check_process:类似于watchdog类的程序，自动检测程序是否在运行，并可以自动拉起。
