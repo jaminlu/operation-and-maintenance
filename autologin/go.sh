@@ -7,7 +7,7 @@ SEVER_CONF=$BASE_PATH/"iplist"
 
 SERVER_LIST=()
 seq=$1
-echo $seq
+#echo $seq
 
 function menu {
 	if [ ! -f $SEVER_CONF ]; then
@@ -34,7 +34,7 @@ function menu {
 function handleChoice {
 	read -n 1 choice
 	local lenth=${#SERVER_LIST[@]}
-	if [[ "$choice" -lt 1 || "$choice" -gt $lenth ]]; then
+	if [[ "$choice" -lt 0 || "$choice" -gt $lenth ]]; then
 	    echo -en "\n\033[31m无效的序号[ $choice ], 是否重新输入( y 是 | n 否 ):\033[0m"
 	    read -n 1 retry
 		if [[ -n "$retry" && "$retry" = "y" ]]; then
@@ -45,14 +45,14 @@ function handleChoice {
 			exit 1
 		fi
 	else
-		echo "000"
+		#echo "000"
 	    	sshlogin $choice;
 	fi	
 }
 
 
 function sshlogin {
-	echo "555"$choice
+	#echo "555"$choice
 	#处理iplist里面每一行的字符串，变成数组
 	OLD_IFS="$IFS" 
 	IFS=" "
