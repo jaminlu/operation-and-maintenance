@@ -1,0 +1,18 @@
+#!/usr/bin/expect
+
+set IP [lindex $argv 0]
+set USER_NAME [lindex $argv 1]
+set PASSWD [lindex $argv 2]
+set SERVER_NAME [lindex $argv 3]
+spawn ssh $USER_NAME@$IP 
+expect {
+	-timeout 30
+	"*assword:" {send "$PASSWD\r\n"; exp_continue; sleep 3;}
+	"yes/no"  {send "yes\n"; exp_continue;}
+	"Last*" {
+		puts "\n登陆成功\n";
+		send "clear\r";
+	}
+	timeout { puts "Expect was timeout."; return}
+}
+interact
